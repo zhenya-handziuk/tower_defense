@@ -5,4 +5,5 @@ edition = "2024"
 
 [dependencies]
 bevy = "0.18.0"
+tiled = "0.11.2"
 bevy_ecs_tiled = "0.11.2"
