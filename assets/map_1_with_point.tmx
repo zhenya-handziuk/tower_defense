@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="93">
+ <tileset firstgid="1" source="[A]Grass1_pipo.tsx"/>
+ <tileset firstgid="49" source="[Base]BaseChip_pipo.tsx"/>
+ <layer id="2" name="Tile Layer 1" width="30" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzjZ2Bg4B/FIw6bEomHm73kyg+EvZSEE63tpYW7iImDgbKXFvE/au+ovZTaS88ydCDtHaoYAAbfM8k=
+  </data>
+ </layer>
+ <objectgroup id="4" name="EnemyPath">
+  <object id="54" x="15.4445" y="159.593">
+   <point/>
+  </object>
+  <object id="55" x="44.0453" y="159.021">
+   <point/>
+  </object>
+  <object id="56" x="72.0741" y="159.021">
+   <point/>
+  </object>
+  <object id="57" x="93.8108" y="159.021">
+   <point/>
+  </object>
+  <object id="58" x="110.971" y="158.449">
+   <point/>
+  </object>
+  <object id="59" x="110.399" y="129.276">
+   <point/>
+  </object>
+  <object id="60" x="111.543" y="98.9589">
+   <point/>
+  </object>
+  <object id="61" x="110.971" y="78.3663">
+   <point/>
+  </object>
+  <object id="62" x="141.86" y="78.9383">
+   <point/>
+  </object>
+  <object id="63" x="166.457" y="78.9383">
+   <point/>
+  </object>
+  <object id="64" x="190.482" y="80.0824">
+   <point/>
+  </object>
+  <object id="65" x="215.078" y="78.9383">
+   <point/>
+  </object>
+  <object id="66" x="238.531" y="78.9383">
+   <point/>
+  </object>
+  <object id="67" x="239.675" y="96.6709">
+   <point/>
+  </object>
+  <object id="68" x="239.675" y="117.835">
+   <point/>
+  </object>
+  <object id="69" x="239.103" y="136.712">
+   <point/>
+  </object>
+  <object id="70" x="237.959" y="160.737">
+   <point/>
+  </object>
+  <object id="71" x="238.531" y="183.617">
+   <point/>
+  </object>
+  <object id="72" x="239.103" y="201.922">
+   <point/>
+  </object>
+  <object id="73" x="239.675" y="222.515">
+   <point/>
+  </object>
+  <object id="74" x="239.103" y="241.963">
+   <point/>
+  </object>
+  <object id="75" x="239.675" y="259.124">
+   <point/>
+  </object>
+  <object id="76" x="238.531" y="272.852">
+   <point/>
+  </object>
+  <object id="77" x="259.124" y="272.28">
+   <point/>
+  </object>
+  <object id="78" x="279.144" y="272.852">
+   <point/>
+  </object>
+  <object id="79" x="298.593" y="272.28">
+   <point/>
+  </object>
+  <object id="80" x="316.897" y="271.136">
+   <point/>
+  </object>
+  <object id="81" x="336.346" y="271.708">
+   <point/>
+  </object>
+  <object id="82" x="352.934" y="270.564">
+   <point/>
+  </object>
+  <object id="83" x="351.79" y="241.963">
+   <point/>
+  </object>
+  <object id="84" x="351.218" y="211.646">
+   <point/>
+  </object>
+  <object id="85" x="351.79" y="173.893">
+   <point/>
+  </object>
+  <object id="86" x="351.218" y="142.432">
+   <point/>
+  </object>
+  <object id="87" x="351.218" y="125.272">
+   <point/>
+  </object>
+  <object id="88" x="378.103" y="126.416">
+   <point/>
+  </object>
+  <object id="89" x="402.7" y="126.988">
+   <point/>
+  </object>
+  <object id="90" x="427.869" y="126.988">
+   <point/>
+  </object>
+  <object id="91" x="451.893" y="126.988">
+   <point/>
+  </object>
+  <object id="92" x="467.91" y="126.416">
+   <point/>
+  </object>
+ </objectgroup>
+</map>
