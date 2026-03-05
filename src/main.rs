@@ -1,5 +1,5 @@
 use crate::tiled::Loader;
-use bevy::{color::Color, prelude::*, window::WindowResolution};
+use bevy::{prelude::*, window::WindowResolution};
 use bevy_ecs_tiled::prelude::*;
 
 fn main() {
@@ -18,7 +18,7 @@ fn main() {
         )
         .add_plugins(TiledPlugin::default())
         .add_systems(Startup, (setup_game, load_enemy_paths))
-        .add_systems(Update, (spawn_enemy, move_enemy))
+        .add_systems(Update, (spawn_enemy, animate_sprite, move_enemy))
         .run();
 }
 
@@ -51,6 +51,9 @@ struct EnemySpawner {
     can_spawn: bool,
     // point_count: usize,
 }
+
+#[derive(Component, Deref, DerefMut)]
+struct AnimationTimer(Timer);
 
 fn load_enemy_paths(mut commands: Commands) {
     let paths = load_paths();
@@ -100,20 +103,28 @@ fn load_paths() -> Vec<Vec2> {
 fn spawn_enemy(
     mut commands: Commands,
     mut enemy_spawner: ResMut<EnemySpawner>,
+    mut texture_atlas_layouts: ResMut<Assets<TextureAtlasLayout>>,
     enemy_paths: Res<EnemyPaths>,
+    asset_server: Res<AssetServer>,
 ) {
     if !enemy_spawner.can_spawn {
         return;
     }
 
     let start_point = enemy_paths.paths[0];
+    let texture: Handle<Image> = asset_server.load("Pink_Monster_Walk_6.png");
+    let layout = TextureAtlasLayout::from_grid(UVec2::new(32, 32), 6, 1, None, None);
+    let atlas = texture_atlas_layouts.add(layout);
 
     commands.spawn((
-        Sprite {
-            color: Color::srgb(1.0, 0.0, 0.0),
-            custom_size: Some(Vec2::new(16.0, 16.0)),
-            ..default()
-        },
+        Sprite::from_atlas_image(
+            texture,
+            TextureAtlas {
+                layout: atlas,
+                index: 0,
+            },
+        ),
+        AnimationTimer(Timer::from_seconds(0.12, TimerMode::Repeating)),
         Transform::from_translation(Vec3::new(start_point.x, start_point.y, 0.0)),
         Enemy {
             current_point: 0,
@@ -144,7 +155,6 @@ fn move_enemy(
         let delta = next_point - Vec2::new(transform.translation.x, transform.translation.y);
 
         if delta.length() < distance {
-            println!("enemy.current_point {:?}", enemy.current_point);
             transform.translation.x = next_point.x;
             transform.translation.y = next_point.y;
             enemy.current_point += 1;
@@ -160,5 +170,21 @@ fn move_enemy(
             transform.translation.x += direction.x * distance;
             transform.translation.y += direction.y * distance;
         }
+    }
+}
+
+fn animate_sprite(time: Res<Time>, mut query: Query<(&mut Sprite, &mut AnimationTimer)>) {
+    for (mut sprite, mut timer) in &mut query {
+        timer.tick(time.delta());
+
+        if !timer.just_finished() {
+            continue;
+        }
+
+        let Some(atlas) = sprite.texture_atlas.as_mut() else {
+            continue;
+        };
+
+        atlas.index = (atlas.index + 1) % 6;
     }
 }
